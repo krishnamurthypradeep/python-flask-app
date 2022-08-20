@@ -1,5 +1,5 @@
 from flask import Flask, jsonify, render_template
-
+import os
 from model import db
 
 app = Flask(__name__)
@@ -10,6 +10,7 @@ def welcome():
     return jsonify(db)
 
 
-app.run("0.0.0.0", 5001)
+if __name__ == "__main__":
+    app.run(debug=True, host="0.0.0.0", port=int(os.environ.get("PORT", 8080)))
 
 
